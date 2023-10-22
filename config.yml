@@ -1,0 +1,4 @@
+db:
+  url: "postgresql+psycopg2://root:pass@localhost/mydb"${DB_URL}
+getter:
+  site: "https://jservice.io/api/random"
