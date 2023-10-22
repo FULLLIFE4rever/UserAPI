@@ -44,8 +44,7 @@ def get_list(
         questions_num: int,
         question_service: QuestionService = Depends(Provide[Container.question_service]),
         getter: QuestionGetter = Depends(Provide[Container.getter])
-) -> list[QuestionModel]:
-    questions_list_out = []
+ v    questions_list_out = []
     while len(questions_list_out) != questions_num:
         questions_count_to_get = questions_num - len(questions_list_out)
         question_json: list = getter.get_list(questions_num=questions_count_to_get)
