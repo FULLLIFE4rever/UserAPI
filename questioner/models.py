@@ -8,12 +8,11 @@ class Question(Base):
 
     id = Column(Integer, primary_key=True)
     question_id = Column(Integer, unique=True)
-    text = Column(String(200))
+    text = Column(String(500))
     answer = Column(String(50))
     publish_date = Column(DateTime(timezone=True), server_default=func.now(), index=True)
 
     def __repr__(self):
-        return "<Question('%d', '%d', '%s', '%s')>" % (self.id,
-                                                       self.question_id,
-                                                       self.text,
-                                                       self.answer)
+        return "<Question('%d', '%s', '%s')>" % (self.question_id,
+                                                 self.text,
+                                                 self.answer)

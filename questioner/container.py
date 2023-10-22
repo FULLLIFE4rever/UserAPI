@@ -20,8 +20,6 @@ class Container(containers.DeclarativeContainer):
 
     wiring_config = containers.WiringConfiguration(modules=["endpoints"])
 
-    # config = providers.Configuration(yaml_files=["config.yml"])
-
     db = providers.Singleton(Database,
                              db_url=f"postgresql+psycopg2://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{DB_HOST}:{DB_PORT}/{POSTGRES_DB}")
 

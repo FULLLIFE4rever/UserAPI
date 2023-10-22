@@ -30,19 +30,25 @@ class QuestionRepository:
 
     def add_questions_list(self, questions: Iterator[Question]) -> Iterator[Question]:
         with self.session_factory() as session:
-            questions_added = session.execute(
-                insert(Question), questions,
-            )
+            questions_added = []
+            new_question = None
+            for question in questions:
+                new_question = Question(question_id=question['id'], text=question['question'], answer=question['answer'])
+                session.add(new_question)
+                # session.flush()
+                # session.refresh(new_question)
+                questions_added.append(new_question)
             session.commit()
-            return questions_added
+            #return questions_added
+            return [{'question_id': item.question_id, 'text': item.text, 'answer': item.answer} for item in questions_added]
 
     def add_question(self, question_id: int, text: str, answer: str) -> Iterator[Question]:
         with self.session_factory() as session:
-            user = Question(question_id=question_id, text=text, answer=answer)
-            session.add(user)
+            question = Question(question_id=question_id, text=text, answer=answer)
+            session.add(question)
             session.commit()
-            session.refresh(user)
-            return user
+            session.refresh(question)
+            return question
 
 
 class NotFoundError(Exception):
