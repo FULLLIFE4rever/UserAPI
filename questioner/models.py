@@ -9,7 +9,7 @@ class Question(Base):
     id = Column(Integer, primary_key=True)
     question_id = Column(Integer, unique=True)
     text = Column(String(500))
-    answer = Column(String(50))
+    answer = Column(String(250))
     publish_date = Column(
         DateTime(timezone=True), server_default=func.now(), index=True
     )
