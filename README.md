@@ -4,7 +4,7 @@
 https://github.com/FULLLIFE4rever/UserAPI
 '''
 
-Создать файл .env в папке с этим файлом
+Создать файл .env в папке с файлом docker-compose.yml
 '''
 POSTGRES_USER={{ Пользователь БД }}
 POSTGRES_PASSWORD={{ Пароль пользователя БД }}
